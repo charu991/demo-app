@@ -39,14 +39,14 @@ pipeline {
     post {
         success {
             mail(
-                to: 'charugunjan88@gmail.com',
+                to: 'ananda.yashaswi@quokkalabs.com,prateek.roy@quokkalabs.com',
                 subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "The build succeeded."
             )
         }
         failure {
             mail(
-                to: 'charugunjan88@gmail.com',
+                to: 'ananda.yashaswi@quokkalabs.com,prateek.roy@quokkalabs.com',
                 subject: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "The build failed."
             )

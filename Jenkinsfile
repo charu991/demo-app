@@ -12,7 +12,7 @@ pipeline{
     }
     stage("Git checkout"){
       steps{
-        git branch:'main', url:'https://github.com/charu991/demo-app'
+        git branch:'master', url:'https://github.com/charu991/demo-app'
       }
     }
     stage("DOCKER BUILD & PUSH"){
@@ -35,17 +35,19 @@ pipeline{
     }
     post {
         success {
-            mail to: 'charugunjan88@gmail.com',
+            mail( to: 'charugunjan88@gmail.com',
                  subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build succeeded."
+                 )
         }
         failure {
-            mail to: 'charugunjan88@gmail.com',
+            mail( to: 'charugunjan88@gmail.com',
                  subject: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build failed."
+                 )
         }
     }
 }
       
   
-    
+        

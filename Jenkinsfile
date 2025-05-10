@@ -32,6 +32,18 @@ pipeline{
             sh 'docker run -itd --name node-app -p 3000:3000 raj2899/demo-app:latest'
         }
     }
+    post {
+        success {
+            mail to: 'yatingambhir85@gmail.com',
+                 subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "The build succeeded. See: ${env.BUILD_URL}"
+        }
+        failure {
+            mail to: 'yatingambhir85@gmail.com',
+                 subject: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "The build failed. See: ${env.BUILD_URL}"
+        }
+    }
     }
 }
       

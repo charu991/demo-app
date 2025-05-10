@@ -28,8 +28,8 @@ pipeline{
     }
     stage("Deployment on Docker"){
         steps{
-            sh 'docker stop demo-app-con && docker rm demo-app-con || true'
-            sh 'docker run -itd --name demo-app-con -p 3000:3000 raj2899/demo-app'
+            sh 'docker stop node-app && docker rm node-app || true'
+            sh 'docker run -itd --name node-app -p 3000:3000 raj2899/demo-app:latest'
         }
     }
     }
